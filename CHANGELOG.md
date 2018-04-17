@@ -7,5 +7,5 @@ Examples of how to use this _markdown_ cand be found here [Keep a CHANGELOG](htt
 
 ## Unreleased
 ### Added
-- First version of the url rewrite plugin plugin
+- First version of the url rewrite plugin
 

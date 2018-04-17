@@ -13,7 +13,7 @@ dependencies = {
 build = {
    type = "builtin",
    modules = {
-    ["kong.plugins.cerberus-plugin.handler"] = "./handler.lua",
-    ["kong.plugins.cerberus-plugin.schema"] = "./schema.lua"
+    ["kong.plugins.kong-url-rewrite-plugin.handler"] = "./handler.lua",
+    ["kong.plugins.kong-url-rewrite-plugin.schema"] = "./schema.lua"
    }
 }

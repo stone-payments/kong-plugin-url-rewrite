@@ -1,4 +1,4 @@
-package = "kong-url-rewrite-plugin"
+package = "kong-plugin-url-rewrite"
 version = "0.1.0-0"
 source = {
    url = "https://github.com/stone-payments/kong-plugin-url-rewrite",
@@ -13,7 +13,7 @@ dependencies = {
 build = {
    type = "builtin",
    modules = {
-    ["kong.plugins.kong-url-rewrite-plugin.handler"] = "./handler.lua",
-    ["kong.plugins.kong-url-rewrite-plugin.schema"] = "./schema.lua"
+    ["kong.plugins.kong-plugin-url-rewrite.handler"] = "./handler.lua",
+    ["kong.plugins.kong-plugin-url-rewrite.schema"] = "./schema.lua"
    }
 }

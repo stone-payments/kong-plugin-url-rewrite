@@ -2,7 +2,7 @@
 
 # kong-plugin-url-rewrite
 
-This is a Kong middleware to log requests / responses using cerberus API.
+Kong API Gateway plugin for url-rewrite purposes.
 
 # project structure
 
@@ -12,27 +12,19 @@ The plugin folder should contain at least a `schema.lua` and a `handler.lua`, al
 
 The `.rockspec` file should follow [LuaRocks' conventions](https://github.com/luarocks/luarocks/wiki/Rockspec-format)
 
-# testing
+## configuration
 
-We're using [busted](http://olivinelabs.com/busted) to run our tests. Every test file should live in a `spec` folder and end with `_spec.lua`.
+### enabling the plugin on a Route
 
-## running the tests
+Configure this plugin on a Route with:
 
-`make test` or `busted spec/` in the plugin folder should do the job.
+```bash
+curl -X POST http://kong:8001/routes/{route_id}/plugins \
+    --data "name=kong-plugin-url-rewrite"  \
+    --data "config.url=http://new-url.com"
+```
 
-remember to run it as super user if your current environment needs it.
-
-## test coverage
-
-If you're using our Makefile, just run `make coverage`.
-
-With Busted, a `-c` flag will do the job.
-It will generate a `luacov.stats.out` that you can use to generate coverage reports.
-You can run `luacov` and it will generate a `luacov.report.out` containing a comprehensive coverage report.
-
-## lint
-
-`make lint` or `luacheck -q .` in the plugin folder should run the linter.
+- route_id: the id of the Route that this plugin configuration will target.
 
 # credits
 

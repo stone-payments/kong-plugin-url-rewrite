@@ -43,17 +43,18 @@ You can run `luacov` and it will generate a `luacov.report.out` containing a com
 - We use GitFlow, you can find more about this workfow [here](http://nvie.com/posts/a-successful-git-branching-model/).
 
 ### Branching
--  **New Features** `feature/<Name of feature>` from `develop`.
--  **Bugfix** `bugfix/<Name of bugfix>` from `develop`.
--  **Improvements** `improvement/<Name of improvement>` from `develop`.
--  **Hotfix** `hotfix/<Name of hotfix>` from `master`.
+
+- **New Features** `feature/<Name of feature>` from `develop`.
+- **Bugfix** `bugfix/<Name of bugfix>` from `develop`.
+- **Improvements** `improvement/<Name of improvement>` from `develop`.
+- **Hotfix** `hotfix/<Name of hotfix>` from `master`.
 
 ### Tests and coverage
 
 - Don't forget to write tests!!
 - We'd like to keep our project with a minimum of 60%, but 90% is the desirable target.
 
-### Commit messages 
+### Commit messages
 
 - Use emoji at the beginning of each message. It help us to identify what's the purpose for each commit.
 
@@ -82,10 +83,10 @@ You can run `luacov` and it will generate a `luacov.report.out` containing a com
 - If possible, link the commit to the corresponding task in our JIRA.
 
 Commit example:
-```
+
+```bash
 git commit -m ":arrow_up: (APIDC-001) Updates rockspec"
 ```
-
 
 ### Pull Requests
 

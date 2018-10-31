@@ -1,39 +1,36 @@
 [![Build Status](https://travis-ci.org/stone-payments/kong-plugin-url-rewrite.svg?branch=master)](https://travis-ci.org/stone-payments/kong-plugin-url-rewrite)
 
-# kong-plugin-url-rewrite
+# Kong-plugin-url-rewrite
 
-This is a Kong middleware to log requests / responses using cerberus API.
+Kong API Gateway plugin for url-rewrite purposes.
 
-# project structure
+## The Problem
+
+When using Kong, you can create routes that proxy to an upstream. The problem lies when the upstream has an url that is not very friendly to your clients, or restful, or even pretty. When you [add a Route in Kong](https://docs.konghq.com/0.14.x/admin-api/#add-route), you have a [somewhat limited](https://docs.konghq.com/0.14.x/proxy/#routes-and-matching-capabilities) url rewrite capability. This plugin simply throws away the url set in Kong route and uses the url set in it's configuration to proxy to the upstream. This gives you full freedom as to how to write your url's in Kong and inner services as well.
+
+## Project Structure
 
 The plugin folder should contain at least a `schema.lua` and a `handler.lua`, alongside with a `spec` folder and a `.rockspec` file specifying the current version of the package.
 
-# rockspec format
+## Rockspec Format
 
 The `.rockspec` file should follow [LuaRocks' conventions](https://github.com/luarocks/luarocks/wiki/Rockspec-format)
 
-# testing
+## Configuration
 
-We're using [busted](http://olivinelabs.com/busted) to run our tests. Every test file should live in a `spec` folder and end with `_spec.lua`.
+### Enabling the plugin on a Route
 
-## running the tests
+Configure this plugin on a Route with:
 
-`make test` or `busted spec/` in the plugin folder should do the job.
+```bash
+curl -X POST http://kong:8001/routes/{route_id}/plugins \
+    --data "name=kong-plugin-url-rewrite"  \
+    --data "config.url=http://new-url.com"
+```
 
-remember to run it as super user if your current environment needs it.
+- route_id: the id of the Route that this plugin configuration will target.
+- config.url: the url where you want kong to execute the request.
 
-## test coverage
-
-If you're using our Makefile, just run `make coverage`.
-
-With Busted, a `-c` flag will do the job.
-It will generate a `luacov.stats.out` that you can use to generate coverage reports.
-You can run `luacov` and it will generate a `luacov.report.out` containing a comprehensive coverage report.
-
-## lint
-
-`make lint` or `luacheck -q .` in the plugin folder should run the linter.
-
-# credits
+## Credits
 
 made with :heart: by Stone Payments

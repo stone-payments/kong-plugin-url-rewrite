@@ -5,7 +5,7 @@ local URLRewriter = BasePlugin:extend()
 URLRewriter.PRIORITY = 700
 
 function URLRewriter:new()
-  URLRewriter.super.new(self, 'url-rewriter')
+  URLRewriter.super.new(self, "url-rewriter")
 end
 
 function URLRewriter:access(config)

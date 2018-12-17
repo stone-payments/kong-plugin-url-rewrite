@@ -1,7 +1,7 @@
 package = "kong-plugin-url-rewrite"
-version = "0.3.0-0"
+version = "0.3.0-1"
 source = {
-   url = "https://github.com/stone-payments/kong-plugin-url-rewrite",
+   url = "git://github.com/stone-payments/kong-plugin-url-rewrite",
 }
 description = {
   summary = "KongAPI Gateway middleware plugin for url-rewrite purposes.",
@@ -13,7 +13,7 @@ dependencies = {
 build = {
    type = "builtin",
    modules = {
-    ["kong.plugins.kong-plugin-url-rewrite.handler"] = "./handler.lua",
-    ["kong.plugins.kong-plugin-url-rewrite.schema"] = "./schema.lua"
+    ["kong.plugins.kong-plugin-url-rewrite.handler"] = "url-rewrite/handler.lua",
+    ["kong.plugins.kong-plugin-url-rewrite.schema"] = "url-rewrite/schema.lua"
    }
 }

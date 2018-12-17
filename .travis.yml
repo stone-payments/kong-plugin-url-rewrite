@@ -14,7 +14,7 @@ install:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: luarocks upload url-rewrite/kong-plugin-url-rewrite-*.rockspec --api-key=$LUAROCKS_API_KEY
+    script: luarocks upload kong-plugin-url-rewrite-*.rockspec --api-key=$LUAROCKS_API_KEY
     on:
       branch: master
 notifications:

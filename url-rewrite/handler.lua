@@ -9,16 +9,20 @@ function URLRewriter:new()
 end
 
 function resolveUrlParams(requestParams, url)
-  for param in requestParams do
-    requestParamValue = ngx.ctx.router_matches.uri_captures[param]
-    newUrl = url:gsub("<" .. param .. ">", requestParamValue)
+  for paramValue in requestParams do
+    local requestParamValue = ngx.ctx.router_matches.uri_captures[paramValue]
+    url = url:gsub("<" .. paramValue .. ">", requestParamValue)
   end
-  return newUrl
+  return url
+end
+
+function getRequestUrlParams(url)
+  return string.gmatch(url, "<(.-)>")
 end
 
 function URLRewriter:access(config)
   URLRewriter.super.access(self)
-  requestParams = string.gmatch(config.url, "<(.-)>") -- Returns all requests params from url.
+  requestParams = getRequestUrlParams(config.url)
   ngx.var.upstream_uri = resolveUrlParams(requestParams, config.url)
 end
 

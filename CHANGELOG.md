@@ -5,7 +5,7 @@ All changes made on any release of this project should be commented on high leve
 Document model based on [Semantic Versioning](http://semver.org/).
 Examples of how to use this _markdown_ cand be found here [Keep a CHANGELOG](http://keepachangelog.com/).
 
-## [Unreleased]() - 2018-12-19
+## [0.4.0](https://github.com/stone-payments/kong-plugin-url-rewrite/tree/v0.4.0) - 2018-12-26
 ### Added
 - support to parameter replacing when rewriting URL.
 

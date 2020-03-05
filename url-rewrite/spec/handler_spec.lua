@@ -8,6 +8,10 @@ local ngx =  {
       router_matches = {
         uri_captures = {}
       }
+    },
+    req = {
+      get_uri_args = spy.new(function() return {} end),
+      set_uri_args = spy.new(function() end)
     }
 }
 
@@ -52,5 +56,23 @@ describe("TestHandler", function()
     local result = resolveUrlParams(iter, mockUrl)
 
     assert.equal("url/123456/test", result)
+  end)
+
+  it("should add querystring params when schema has query_string field", function()
+    URLRewriter:new()
+    ngx.ctx.router_matches.uri_captures["code_parameter"] = "123456"
+    config = {
+        url = "new_url",
+        query_string = {
+          "code_parameter=<code_parameter>",
+          "parameter2=abcdef",
+        }
+    }
+    URLRewriter:access(config)
+    local expected = {
+      code_parameter = "123456",
+      parameter2 = "abcdef",
+    }
+    assert.spy(ngx.req.set_uri_args).was_called_with(expected)
   end)
 end)

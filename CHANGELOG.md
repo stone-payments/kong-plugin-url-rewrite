@@ -8,11 +8,11 @@ Examples of how to use this _markdown_ cand be found here [Keep a CHANGELOG](htt
 
 ## Unreleased
 ### Added
-- support to querystring field.
+- Support to querystring field.
 
 ## [0.4.0](https://github.com/stone-payments/kong-plugin-url-rewrite/tree/v0.4.0) - 2018-12-26
 ### Added
-- support to parameter replacing when rewriting URL.
+- Support to parameter replacing when rewriting URL.
 
 ## [0.3.0](https://github.com/stone-payments/kong-plugin-url-rewrite/tree/v0.3.0) - 2018-10-30
 ### Added

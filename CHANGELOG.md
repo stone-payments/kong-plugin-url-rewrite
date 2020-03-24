@@ -5,6 +5,9 @@ All changes made on any release of this project should be commented on high leve
 Document model based on [Semantic Versioning](http://semver.org/).
 Examples of how to use this _markdown_ cand be found here [Keep a CHANGELOG](http://keepachangelog.com/).
 
+## Unreleased
+### Fixed
+- [resolveUrlParams function with special character in url](https://dev.azure.com/stonepagamentos/frt-portal/_workitems/edit/132078)
 
 ## [0.5.0](https://github.com/stone-payments/kong-plugin-url-rewrite/tree/v0.5.0) - 2020-03-05
 ### Added

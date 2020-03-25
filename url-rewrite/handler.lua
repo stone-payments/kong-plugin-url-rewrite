@@ -19,6 +19,9 @@ end
 function resolveUrlParams(requestParams, url)
   for paramValue in requestParams do
     local requestParamValue = ngx.ctx.router_matches.uri_captures[paramValue]
+    if type(requestParamValue) == 'string' then
+      requestParamValue = requestParamValue:gsub("%%", "%%%%")
+    end
     url = url:gsub("<" .. paramValue .. ">", requestParamValue)
   end
   return url

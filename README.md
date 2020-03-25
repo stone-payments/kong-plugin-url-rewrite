@@ -31,6 +31,15 @@ curl -X POST http://kong:8001/routes/{route_id}/plugins \
 - route_id: the id of the Route that this plugin configuration will target.
 - config.url: the url where you want kong to execute the request.
 
+## Developing
+
+### In docker
+
+```bash
+docker build . -t kong-plugin-url-rewrite-dev
+docker run -it -v ${PWD}/url-rewrite:/url-rewrite kong-plugin-url-rewrite-dev bash
+```
+
 ## Credits
 
 made with :heart: by Stone Payments

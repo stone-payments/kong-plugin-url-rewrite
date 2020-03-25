@@ -1,5 +1,5 @@
 package = "kong-plugin-url-rewrite"
-version = "0.5.0-0"
+version = "0.5.1-0"
 source = {
    url = "git://github.com/stone-payments/kong-plugin-url-rewrite",
 }

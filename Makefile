@@ -3,7 +3,6 @@ PROJECT_FOLDER = url-rewrite
 LUA_PROJECT = kong-plugin-url-rewrite
 
 setup:
-	cd $(PROJECT_FOLDER)
 	@for rock in $(DEV_ROCKS) ; do \
 		if luarocks list --porcelain $$rock | grep -q "installed" ; then \
 			echo $$rock already installed, skipping ; \
@@ -14,7 +13,6 @@ setup:
 	done;
 
 check:
-	cd $(PROJECT_FOLDER)
 	@for rock in $(DEV_ROCKS) ; do \
 		if luarocks list --porcelain $$rock | grep -q "installed" ; then \
 			echo $$rock is installed ; \

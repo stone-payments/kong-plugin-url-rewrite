@@ -57,6 +57,18 @@ describe("TestHandler", function()
 
     assert.equal("url/123456/test", result)
   end)
+  
+  it("should replace url params with special character", function()
+    URLRewriter:new()
+    local mockUrl = "url/<param1>/<param2>"
+    local iter = getRequestUrlParams(mockUrl)
+    ngx.ctx.router_matches.uri_captures["param1"] = "test%23special%2fcharacter"
+    ngx.ctx.router_matches.uri_captures["param2"] = "test%2bspecial%3fcharacter"
+
+    local result = resolveUrlParams(iter, mockUrl)
+
+    assert.equal("url/test%23special%2fcharacter/test%2bspecial%3fcharacter", result)
+  end)
 
   it("should add querystring params when schema has query_string field", function()
     URLRewriter:new()

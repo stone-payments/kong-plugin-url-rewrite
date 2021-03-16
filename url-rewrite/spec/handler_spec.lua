@@ -1,3 +1,9 @@
+-- Mock kong
+local kong = {
+  request = {
+    get_body = spy.new(function() return {} end),
+  }
+}
 -- Mock ngx
 local ngx =  {
     log = spy.new(function() end),
@@ -16,6 +22,7 @@ local ngx =  {
 }
 
 _G.ngx = ngx
+_G.kong = kong
 
 local URLRewriter = require('../handler')
 
@@ -86,5 +93,20 @@ describe("TestHandler", function()
       parameter2 = "abcdef",
     }
     assert.spy(ngx.req.set_uri_args).was_called_with(expected)
+  end)
+
+  it("should replace url params with the body value", function ()
+    URLRewriter:new()
+
+    kong.request.get_body = function ()
+      return '{"information": "00001111"}'
+    end
+    
+    config = {
+      url = "new_url/<body:information>",
+    }
+
+    URLRewriter:access(config)
+    assert.equal('new_url/00001111', ngx.var.upstream_uri)
   end)
 end)

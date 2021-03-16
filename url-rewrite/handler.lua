@@ -1,4 +1,8 @@
 local BasePlugin = require "kong.plugins.base_plugin"
+local cjson_decode = require('cjson').decode
+
+local req_read_body = ngx.req.read_body
+local req_get_body_data = ngx.req.get_body_data
 
 local URLRewriter = BasePlugin:extend()
 
@@ -12,17 +16,39 @@ function split(s, delimiter)
   return result
 end
 
+function isBodyPattern(paramValue)
+  local bodyUrlParamPattern = "^body:"
+  return paramValue:find(bodyUrlParamPattern) ~= nil
+end
+
 function URLRewriter:new()
   URLRewriter.super.new(self, "url-rewriter")
 end
 
+
 function resolveUrlParams(requestParams, url)
   for paramValue in requestParams do
-    local requestParamValue = ngx.ctx.router_matches.uri_captures[paramValue]
-    if type(requestParamValue) == 'string' then
-      requestParamValue = requestParamValue:gsub("%%", "%%%%")
+    if isBodyPattern(paramValue) then
+      local body = nil
+      local data = kong.request.get_body()
+
+      if data then
+        body = cjson_decode(data)
+      end
+
+      local splitted = split(paramValue, ':')
+      url = url:gsub("<" .. paramValue .. ">", body[splitted[2]])
+    else
+      local requestParamValue = ngx.ctx.router_matches.uri_captures[paramValue]
+      
+      if type(requestParamValue) == 'string' then
+        requestParamValue = requestParamValue:gsub("%%", "%%%%")
+      end
+
+      url = url:gsub("<" .. paramValue .. ">", requestParamValue)
     end
-    url = url:gsub("<" .. paramValue .. ">", requestParamValue)
+
+    
   end
   return url
 end

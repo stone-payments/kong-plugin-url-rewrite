@@ -25,10 +25,6 @@ install:
 	-@luarocks remove $(LUA_PROJECT)
 	luarocks make
 
-install-local:
-	-@luarocks remove $(LUA_PROJECT) --local
-	luarocks make --local
-
 test:
 	cd $(PROJECT_FOLDER) && busted spec/ ${ARGS}
 

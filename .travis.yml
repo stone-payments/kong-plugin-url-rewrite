@@ -16,7 +16,7 @@ deploy:
     skip_cleanup: true
     script: luarocks upload kong-plugin-url-rewrite-*.rockspec --api-key=$LUAROCKS_API_KEY
     on:
-      branch: master
+      branch: legacy/v0
 notifications:
   email:
     on_success: never

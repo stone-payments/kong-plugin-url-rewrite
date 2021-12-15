@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/stone-payments/kong-plugin-url-rewrite.svg?branch=master)](https://travis-ci.org/stone-payments/kong-plugin-url-rewrite)
+[![Build Status](https://travis-ci.org/stone-payments/kong-plugin-url-rewrite.svg?branch=legacy/v0)](https://travis-ci.org/stone-payments/kong-plugin-url-rewrite)
 
 # Kong-plugin-url-rewrite
 

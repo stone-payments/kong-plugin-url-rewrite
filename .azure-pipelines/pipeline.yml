@@ -29,8 +29,8 @@ stages:
 
           - bash: |
               sudo apt-get install libssl-dev
-              wget https://download.konghq.com/gateway-2.x-ubuntu-bionic/pool/all/k/kong/kong_2.6.0_amd64.deb
-              sudo apt-get install ./kong_2.6.0_amd64.deb
+              wget https://download.konghq.com/gateway-0.x-ubuntu-xenial/pool/all/k/kong-community-edition/kong-community-edition_0.14.1_all.deb
+              sudo apt-get install ./kong-community-edition_0.14.1_all.deb
             displayName: Installing kong
 
           - task: Bash@3

@@ -1,0 +1,122 @@
+pr:
+- master
+- develop
+
+trigger:
+- master
+- develop
+
+pool:
+  vmImage: 'ubuntu-18.04'
+
+variables:
+  plugin: 'url-rewrite'
+
+stages:
+    - stage: Build
+      jobs: 
+        - job: Build
+          steps:
+          - bash: |
+              sudo apt install lua5.3
+              sudo apt-get install liblua5.3-dev
+
+              wget https://luarocks.org/releases/luarocks-3.3.1.tar.gz
+              tar zxpf luarocks-3.3.1.tar.gz
+              cd luarocks-3.3.1 && ./configure --with-lua-include=/usr/include/lua5.3 \
+                && make && sudo make install
+            displayName: Install Lua and Luarocks
+
+          - bash: |
+              sudo apt-get install libssl-dev
+              wget https://download.konghq.com/gateway-2.x-ubuntu-bionic/pool/all/k/kong/kong_2.6.0_amd64.deb
+              sudo apt-get install ./kong_2.6.0_amd64.deb
+            displayName: Installing kong
+
+          - task: Bash@3
+            displayName: 'Prepare'
+            inputs:
+              targetType: 'inline'
+              script: |
+                sudo make setup
+                make check
+                sudo make install
+                sudo make package
+
+          - task: UniversalPackages@0
+            displayName: 'Download correct luacov-cobertura version'
+            inputs:
+              command: 'download'
+              downloadDirectory: '$(System.DefaultWorkingDirectory)'
+              feedsToUse: 'internal'
+              vstsFeed: 'd8a23181-28c7-4e59-9cea-25e643da3675'
+              vstsFeedPackage: '6162cb93-aff3-4686-8f03-fade4ecabccb'
+              vstsPackageVersion: '2.0.0'
+
+          - task: Bash@3
+            displayName: 'Install luacov-cobertura correct version'
+            inputs:
+              targetType: 'inline'
+              script: |
+                sudo luarocks install $(System.DefaultWorkingDirectory)/luacov-cobertura-2.0-0.all.rock
+                rm $(System.DefaultWorkingDirectory)/luacov-cobertura-2.0-0.all.rock
+
+          - task: Bash@3
+            displayName: 'Run tests and code coverage'
+            inputs:
+              targetType: 'inline'
+              script: |
+                make coverage
+
+          - task: PublishCodeCoverageResults@1
+            displayName: 'Publish code coverage'
+            inputs:
+                codeCoverageTool: Cobertura
+                summaryFileLocation: '$(System.DefaultWorkingDirectory)/$(plugin)/cobertura.xml'
+
+          - task: Bash@3
+            displayName: 'Set Artifact Name and Version'
+            inputs:
+              targetType: 'inline'
+              script: |
+                export ARTIFACT_NAME=$(ls $(plugin)/*.rock)
+                echo "##vso[task.setvariable variable=ArtifactName]$(echo $ARTIFACT_NAME)"
+
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish Artifact: drop'
+            inputs:
+                PathtoPublish: '$(ArtifactName)'
+
+    - stage: Publish
+      condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/master'))
+      jobs: 
+        - job: Publish
+          steps:
+            - task: DownloadBuildArtifacts@0
+              displayName: 'Download build artifacts'
+              inputs:
+                buildType: 'current'
+                downloadType: 'single'
+                artifactName: drop
+                downloadPath: '$(System.ArtifactsDirectory)'
+
+            - task: Bash@3
+              displayName: 'Set Artifact Name and Version'
+              inputs:
+                targetType: 'inline'
+                script: |
+                  export ARTIFACT_NAME=$(ls $(System.ArtifactsDirectory)/drop/*.rock)
+                  echo "##vso[task.setvariable variable=ArtifactName]$(echo $ARTIFACT_NAME)"
+                  export ARTIFACT_VERSION=$(echo $ARTIFACT_NAME | grep -Eo '[0-9]+.[0-9]+.[0-9]+?')
+                  echo "##vso[task.setvariable variable=ArtifactVersion]$(echo $ARTIFACT_VERSION)"
+
+            - task: UniversalPackages@0
+              displayName: 'Publish package to feed'
+              inputs:
+                command: 'publish'
+                publishDirectory: '$(System.ArtifactsDirectory)/drop'
+                feedsToUsePublish: 'internal'
+                vstsFeedPackagePublish: 'kong-plugin-url-rewrite'
+                vstsFeedPublish: 'd8a23181-28c7-4e59-9cea-25e643da3675'
+                versionOption: 'custom'
+                versionPublish: $(ArtifactVersion)

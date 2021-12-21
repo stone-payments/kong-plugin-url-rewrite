@@ -5,6 +5,10 @@ All changes made on any release of this project should be commented on high leve
 Document model based on [Semantic Versioning](http://semver.org/).
 Examples of how to use this _markdown_ cand be found here [Keep a CHANGELOG](http://keepachangelog.com/).
 
+## [1.0.0](https://github.com/stone-payments/kong-plugin-url-rewrite/tree/v1.0.0) - 2021-12-21
+### Feature
+- Upgrades plugin to be kong >= 2.6.0 compatible.
+
 ## [0.5.1](https://github.com/stone-payments/kong-plugin-url-rewrite/tree/v0.5.1) - 2020-04-01
 ### Fixed
 - [resolveUrlParams function with special character in url](https://dev.azure.com/stonepagamentos/frt-portal/_workitems/edit/132078)

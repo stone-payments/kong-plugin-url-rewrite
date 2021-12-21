@@ -21,13 +21,7 @@ local URLRewriter = require('../handler')
 
 describe("TestHandler", function()
 
-  it("should test handler constructor", function()
-    URLRewriter:new()
-    assert.equal('url-rewriter', URLRewriter._name)
-  end)
-
   it("should test rewrite of upstream_uri", function()
-    URLRewriter:new()
     assert.equal('mock', ngx.var.upstream_uri)
     config = {
         url = "new_url"
@@ -37,7 +31,6 @@ describe("TestHandler", function()
   end)
 
   it("should test rewrite of upstream_uri with params", function()
-    URLRewriter:new()
     ngx.ctx.router_matches.uri_captures["code_parameter"] = "123456"
     config = {
         url = "new_url/<code_parameter>"
@@ -47,7 +40,6 @@ describe("TestHandler", function()
   end)
 
   it("should replace url params", function()
-    URLRewriter:new()
     local mockUrl = "url/<param1>/<param2>"
     local iter = getRequestUrlParams(mockUrl)
     ngx.ctx.router_matches.uri_captures["param1"] = 123456
@@ -59,7 +51,6 @@ describe("TestHandler", function()
   end)
   
   it("should replace url params with special character", function()
-    URLRewriter:new()
     local mockUrl = "url/<param1>/<param2>"
     local iter = getRequestUrlParams(mockUrl)
     ngx.ctx.router_matches.uri_captures["param1"] = "test%23special%2fcharacter"
@@ -71,7 +62,6 @@ describe("TestHandler", function()
   end)
 
   it("should add querystring params when schema has query_string field", function()
-    URLRewriter:new()
     ngx.ctx.router_matches.uri_captures["code_parameter"] = "123456"
     config = {
         url = "new_url",

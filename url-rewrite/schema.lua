@@ -1,7 +1,17 @@
+local typedefs = require 'kong.db.schema.typedefs'
+
 return {
-  no_consumer = true,
+  name = "kong-plugin-url-rewrite",
   fields = {
-    url = {required = true, type = "string"},
-    query_string = {required = false, type = "table"}
+    { consumer = typedefs.no_consumer, },
+    {
+      config = {
+        type = "record",
+        fields = {
+          { url = { required = true, type = "string" }, },
+          { query_string = { required = false, type = "array", elements = { type = "string" } } },
+        }
+      }
+    }
   }
 }

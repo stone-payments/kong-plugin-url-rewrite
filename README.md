@@ -2,7 +2,7 @@
 
 # Kong-plugin-url-rewrite
 
-Kong API Gateway plugin for url-rewrite purposes.
+Kong API Gateway plugin for url-rewrite purposes. This plugin has been tested to work along with kong >= 2.6.x, for a legacy version of this plugin, please check [this link](https://github.com/stone-payments/kong-plugin-url-rewrite/tree/legacy/v0).
 
 ## The Problem
 

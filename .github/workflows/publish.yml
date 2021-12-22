@@ -43,4 +43,4 @@ jobs:
 
       - name: deploy
         run: |
-          luarocks upload kong-plugin-template-transformer-*.rockspec --api-key=$LUAROCKS_API_KEY
+          luarocks upload kong-plugin-url-rewrite-*.rockspec --api-key=$LUAROCKS_API_KEY

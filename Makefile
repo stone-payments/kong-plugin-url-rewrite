@@ -25,6 +25,12 @@ install:
 	-@luarocks remove $(LUA_PROJECT)
 	luarocks make
 
+docker-build:
+	docker build . -t $(LUA_PROJECT)
+
+docker-run:
+	docker run -it -v $(shell pwd):/home/plugin $(LUA_PROJECT) /bin/bash
+
 test:
 	cd $(PROJECT_FOLDER) && busted spec/ ${ARGS}
 

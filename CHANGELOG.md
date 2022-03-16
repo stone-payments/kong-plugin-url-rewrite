@@ -5,6 +5,13 @@ All changes made on any release of this project should be commented on high leve
 Document model based on [Semantic Versioning](http://semver.org/).
 Examples of how to use this _markdown_ cand be found here [Keep a CHANGELOG](http://keepachangelog.com/).
 
+## [1.1.0](https://github.com/stone-payments/kong-plugin-url-rewrite/compare/v1.0.0...v1.1.0) (2022-03-16)
+
+
+### Features
+
+* Adds service path to upstream URL when it is present ([cafa270](https://github.com/stone-payments/kong-plugin-url-rewrite/commit/cafa270ebab5f585705234d4491a0206ffd811f5))
+
 ## [1.0.0](https://github.com/stone-payments/kong-plugin-url-rewrite/tree/v1.0.0) - 2021-12-21
 ### Feature
 - Upgrades plugin to be kong >= 2.6.0 compatible.

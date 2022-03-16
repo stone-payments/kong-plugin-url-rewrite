@@ -18,20 +18,22 @@ stages:
         - job: Build
           steps:
           - bash: |
-              sudo apt install lua5.3
-              sudo apt-get install liblua5.3-dev
+              sudo apt install -y lua5.3
+              sudo apt install -y liblua5.3-dev
 
               wget https://luarocks.org/releases/luarocks-3.3.1.tar.gz
               tar zxpf luarocks-3.3.1.tar.gz
               cd luarocks-3.3.1 && ./configure --with-lua-include=/usr/include/lua5.3 \
                 && make && sudo make install
+              cd .. && rm -rf luarocks-3.3.1 && rm luarocks-3.3.1.tar.gz
             displayName: Install Lua and Luarocks
 
           - bash: |
-              sudo apt-get install libssl-dev
+              sudo apt install -y libssl-dev
               wget https://download.konghq.com/gateway-2.x-ubuntu-bionic/pool/all/k/kong/kong_2.6.0_amd64.deb
-              sudo apt-get install ./kong_2.6.0_amd64.deb
-            displayName: Installing kong
+              sudo apt install -y ./kong_2.6.0_amd64.deb
+              rm kong_2.6.0_amd64.deb
+            displayName: Install kong
 
           - task: Bash@3
             displayName: 'Prepare'

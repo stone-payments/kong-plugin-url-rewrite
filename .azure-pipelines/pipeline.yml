@@ -1,9 +1,9 @@
 pr:
-- master
+- main
 - develop
 
 trigger:
-- master
+- main
 - develop
 
 pool:
@@ -88,7 +88,7 @@ stages:
                 PathtoPublish: '$(ArtifactName)'
 
     - stage: Publish
-      condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/master'))
+      condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/main'))
       jobs: 
         - job: Publish
           steps:

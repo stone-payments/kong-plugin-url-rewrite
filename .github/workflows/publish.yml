@@ -2,7 +2,7 @@ name: PublishPlugin
 
 on:
   push:
-    branches: [master]
+    branches: [master, legacy/v0]
 
   workflow_dispatch:
 

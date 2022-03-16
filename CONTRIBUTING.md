@@ -47,7 +47,7 @@ You can run `luacov` and it will generate a `luacov.report.out` containing a com
 - **New Features** `feature/<Name of feature>` from `develop`.
 - **Bugfix** `bugfix/<Name of bugfix>` from `develop`.
 - **Improvements** `improvement/<Name of improvement>` from `develop`.
-- **Hotfix** `hotfix/<Name of hotfix>` from `master`.
+- **Hotfix** `hotfix/<Name of hotfix>` from `main`.
 
 ### Tests and coverage
 
@@ -97,7 +97,7 @@ git commit -m ":arrow_up: (APIDC-001) Updates rockspec"
 - **DO** ensure each commit successfully builds. The entire PR must pass all tests in the Continuous Integration (CI) system before it'll be merged.
 - **DO NOT** mix independent, unrelated changes in one PR. Separate real product/test code changes from larger code formatting/dead code removal changes. Separate unrelated fixes into separate PRs, especially if they are in different assemblies.
 - **DO** address PR feedback in an additional commit(s) rather than amending the existing commits, and only rebase/squash them when necessary. This makes it easier for reviewers to track changes. If necessary, squashing should be handled by the merger using the "squash and merge" feature, and should only be done by the contributor upon request.
-- **DO** all the PRs to `develop` branch unless it is a `hotfix`. For this one you should do for both `develop` and `master` branches.
+- **DO** all the PRs to `develop` branch unless it is a `hotfix`. For this one you should do for both `develop` and `main` branches.
 
 ### Guiding Principles
 

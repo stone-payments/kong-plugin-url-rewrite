@@ -7,7 +7,8 @@ local ngx =  {
     ctx = {
       router_matches = {
         uri_captures = {}
-      }
+      },
+      service = {}
     },
     req = {
       get_uri_args = spy.new(function() return {} end),
@@ -28,6 +29,16 @@ describe("TestHandler", function()
     }
     URLRewriter:access(config)
     assert.equal('new_url', ngx.var.upstream_uri)
+  end)
+
+  it("should add service path to upstream_uri when it is present", function()
+    ngx.ctx.service['path'] = "path/to/"
+    config = {
+        url = "new_url"
+    }
+    URLRewriter:access(config)
+    assert.equal('path/to/new_url', ngx.var.upstream_uri)
+    ngx.ctx.service['path'] = nil
   end)
 
   it("should test rewrite of upstream_uri with params", function()

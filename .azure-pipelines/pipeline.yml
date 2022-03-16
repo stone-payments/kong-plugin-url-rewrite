@@ -117,6 +117,7 @@ stages:
                 publishDirectory: '$(System.ArtifactsDirectory)/drop'
                 feedsToUsePublish: 'internal'
                 vstsFeedPackagePublish: 'kong-plugin-url-rewrite'
+                packagePublishDescription: 'kong-plugin-url-rewrite'
                 vstsFeedPublish: 'd8a23181-28c7-4e59-9cea-25e643da3675'
                 versionOption: 'custom'
                 versionPublish: $(ArtifactVersion)

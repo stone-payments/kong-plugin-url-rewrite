@@ -1,0 +1,13 @@
+{
+    "header": "# Changelog\n\nAll changes made on any release of this project should be commented on high level of this document.\n\nDocument model based on [Semantic Versioning](http://semver.org/).\nExamples of how to use this _markdown_ cand be found here [Keep a CHANGELOG](http://keepachangelog.com/).\n",
+    "bumpFiles": [
+        {
+            "filename": "rockspec.template",
+            "updater": ".standard-version/rockspec-updater.js"
+        },
+        {
+            "filename": "Makefile",
+            "updater": ".standard-version/makefile-updater.js"
+        }
+    ]
+}

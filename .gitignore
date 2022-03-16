@@ -6,6 +6,7 @@ luac.out
 *.zip
 *.tar.gz
 *.all.rock
+*.rockspec
 
 # Object files
 *.o

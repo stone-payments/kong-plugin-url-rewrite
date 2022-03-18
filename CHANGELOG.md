@@ -5,6 +5,13 @@ All changes made on any release of this project should be commented on high leve
 Document model based on [Semantic Versioning](http://semver.org/).
 Examples of how to use this _markdown_ cand be found here [Keep a CHANGELOG](http://keepachangelog.com/).
 
+### [1.1.1](https://github.com/stone-payments/kong-plugin-url-rewrite/compare/v1.1.0...v1.1.1) (2022-03-17)
+
+
+### Bug Fixes
+
+* Fixes luarocks package download during publish ([ae086cd](https://github.com/stone-payments/kong-plugin-url-rewrite/commit/ae086cd2015bc0b2037251f1be3953a808eb3d3f))
+
 ## [1.1.0](https://github.com/stone-payments/kong-plugin-url-rewrite/compare/v1.0.0...v1.1.0) (2022-03-16)
 
 

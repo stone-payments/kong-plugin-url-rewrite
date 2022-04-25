@@ -5,6 +5,13 @@ All changes made on any release of this project should be commented on high leve
 Document model based on [Semantic Versioning](http://semver.org/).
 Examples of how to use this _markdown_ cand be found here [Keep a CHANGELOG](http://keepachangelog.com/).
 
+## [0.6.0](https://github.com/stone-payments/kong-plugin-url-rewrite/compare/v0.5.1...v0.6.0) (2022-04-25)
+
+
+### Features
+
+* Adds service path to upstream URL when it is present ([b6c972f](https://github.com/stone-payments/kong-plugin-url-rewrite/commit/b6c972f1d04540547cecc9d183717a5ede130e0b))
+
 ## [0.5.1](https://github.com/stone-payments/kong-plugin-url-rewrite/tree/v0.5.1) - 2020-04-01
 ### Fixed
 - [resolveUrlParams function with special character in url](https://dev.azure.com/stonepagamentos/frt-portal/_workitems/edit/132078)

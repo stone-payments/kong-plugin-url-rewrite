@@ -1,4 +1,4 @@
-const capturingRegex = /VERSION = "(?<version>[\d.]*)-0"/;
+const capturingRegex = /VERSION = (?<version>[\d.]*)-0/;
 
 module.exports.readVersion = function (contents) {
   const { version } = contents.match(capturingRegex).groups;

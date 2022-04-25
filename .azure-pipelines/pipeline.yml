@@ -79,7 +79,7 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                export ARTIFACT_NAME=$(ls $(plugin)/*.rock)
+                export ARTIFACT_NAME=$(ls *.rock)
                 echo "##vso[task.setvariable variable=ArtifactName]$(echo $ARTIFACT_NAME)"
 
           - task: PublishBuildArtifacts@1

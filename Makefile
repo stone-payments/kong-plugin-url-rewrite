@@ -28,6 +28,7 @@ install:
 	luarocks make
 
 docker-build:
+	cp rockspec.template kong-plugin-url-rewrite-$(VERSION).rockspec
 	docker build . -t $(LUA_PROJECT)
 
 docker-run:

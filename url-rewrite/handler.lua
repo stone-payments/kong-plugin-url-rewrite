@@ -48,6 +48,12 @@ function URLRewriter:access(config)
 
   requestParams = getRequestUrlParams(config.url)
   local url = resolveUrlParams(requestParams, config.url)
+
+  local service_path = ngx.ctx.service.path or ""
+  if service_path ~= "" then
+    url = service_path..url
+  end
+
   ngx.var.upstream_uri = url
 end
 

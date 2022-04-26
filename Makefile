@@ -1,4 +1,4 @@
-DEV_ROCKS = "lua-cjson 2.1.0" "kong 0.13.1" "luacov 0.12.0" "busted 2.0.rc12" "luacov-cobertura 0.2-1" "luacheck 0.20.0"
+DEV_ROCKS = "https://raw.githubusercontent.com/openresty/lua-cjson/2.1.0.8/lua-cjson-2.1.0.6-1.rockspec" "kong 0.13.1" "luacov 0.12.0" "busted 2.0.rc12" "luacov-cobertura 0.2-1" "luacheck 0.20.0"
 PROJECT_FOLDER = url-rewrite
 LUA_PROJECT = kong-plugin-url-rewrite
 VERSION = 0.6.0-0

@@ -20,11 +20,10 @@ jobs:
 
       - name: before install
         run: |
-          sudo apt-get update
-          sudo apt-get install -y libssl-dev luarocks
-          sudo pip install hererocks
-          sudo hererocks lua_install -r^ --${{ env.LUA }}
-          export PATH=$PATH:$PWD/lua_install/bin
+          sudo apt update
+          sudo apt install -y lua5.1 liblua5.1-0-dev luarocks libssl-dev
+          wget https://download.konghq.com/gateway-0.x-ubuntu-xenial/pool/all/k/kong-community-edition/kong-community-edition_0.13.1_all.deb
+          sudo apt install -y ./kong-community-edition_0.13.1_all.deb
       - name: install
         run: |
           git config --global url.https://github.com/.insteadOf git://github.com/

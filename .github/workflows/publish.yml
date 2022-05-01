@@ -46,4 +46,4 @@ jobs:
             LUAROCKS_API_KEY:${{ env.GCP_PROJECT_ID }}/LUAROCKS_APIKEY
       - name: deploy
         run: |
-          luarocks upload kong-plugin-url-rewrite-*.rockspec --api-key=${{ steps.luarocks-key.outputs.LUAROCKS_API_KEY }}
+          luarocks upload kong-plugin-url-rewrite-*.rockspec --force --api-key=${{ steps.luarocks-key.outputs.LUAROCKS_API_KEY }}

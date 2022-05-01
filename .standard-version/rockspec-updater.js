@@ -1,12 +1,16 @@
-const capturingRegex = /version = "(?<version>[\d.]*)-0"/;
+const versionRegex = /version = "(?<version>[\d.]*)-0"/;
+const tagRegex = /tag = "v(?<version>[\d.]*)"/;
 
 module.exports.readVersion = function (contents) {
-  const { version } = contents.match(capturingRegex).groups;
+  const { version } = contents.match(versionRegex).groups;
   return version;
 };
 
 module.exports.writeVersion = function (contents, version) {
-  const replacer = () => `version = "${version}-0"`;
+  const versionReplacer = () => `version = "${version}-0"`;
+  const tagReplacer = () => `tag = "v${version}"`;
 
-  return contents.replace(capturingRegex, replacer);
+  return contents
+    .replace(versionRegex, versionReplacer)
+    .replace(tagRegex, tagReplacer);
 };

@@ -5,6 +5,13 @@ All changes made on any release of this project should be commented on high leve
 Document model based on [Semantic Versioning](http://semver.org/).
 Examples of how to use this _markdown_ cand be found here [Keep a CHANGELOG](http://keepachangelog.com/).
 
+### [0.6.1](https://github.com/stone-payments/kong-plugin-url-rewrite/compare/v0.6.0...v0.6.1) (2022-05-04)
+
+
+### Bug Fixes
+
+* Fixes rockspec to consider tag/branch when uploading to LuaRocks ([43b59bd](https://github.com/stone-payments/kong-plugin-url-rewrite/commit/43b59bd43998c9aeaa4e7a2dc43cdf3537ec7948))
+
 ## [0.6.0](https://github.com/stone-payments/kong-plugin-url-rewrite/compare/v0.5.1...v0.6.0) (2022-04-25)
 
 

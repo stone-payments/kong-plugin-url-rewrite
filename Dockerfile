@@ -15,7 +15,9 @@ RUN git config --global url.https://github.com/.insteadOf git://github.com/
 WORKDIR /home/plugin
 
 ADD Makefile .
+ADD rockspec.template .
 RUN make setup
 
 ADD kong-plugin-url-rewrite-*.rockspec .
+COPY url-rewrite url-rewrite/
 RUN chmod -R a+rw /home/plugin

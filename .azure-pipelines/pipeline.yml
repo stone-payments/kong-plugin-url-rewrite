@@ -7,7 +7,7 @@ trigger:
 - develop
 
 pool:
-  vmImage: 'ubuntu-18.04'
+  vmImage: 'ubuntu-latest'
 
 variables:
   plugin: 'url-rewrite'
@@ -18,21 +18,21 @@ stages:
         - job: Build
           steps:
           - bash: |
-              sudo apt install -y lua5.3
-              sudo apt install -y liblua5.3-dev
+              sudo apt install -y lua5.1
+              sudo apt install -y liblua5.1-dev
 
               wget https://luarocks.org/releases/luarocks-3.3.1.tar.gz
               tar zxpf luarocks-3.3.1.tar.gz
-              cd luarocks-3.3.1 && ./configure --with-lua-include=/usr/include/lua5.3 \
+              cd luarocks-3.3.1 && ./configure --with-lua-include=/usr/include/lua5.1 \
                 && make && sudo make install
               cd .. && rm -rf luarocks-3.3.1 && rm luarocks-3.3.1.tar.gz
             displayName: Install Lua and Luarocks
 
           - bash: |
               sudo apt install -y libssl-dev
-              wget https://download.konghq.com/gateway-2.x-ubuntu-bionic/pool/all/k/kong/kong_2.6.0_amd64.deb
-              sudo apt install -y ./kong_2.6.0_amd64.deb
-              rm kong_2.6.0_amd64.deb
+              wget https://download.konghq.com/gateway-3.x-ubuntu-bionic/pool/all/k/kong/kong_3.0.0_amd64.deb
+              sudo apt install -y ./kong_3.0.0_amd64.deb
+              rm kong_3.0.0_amd64.deb
             displayName: Install kong
 
           - task: Bash@3

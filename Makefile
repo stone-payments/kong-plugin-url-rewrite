@@ -3,8 +3,10 @@ PROJECT_FOLDER = url-rewrite
 LUA_PROJECT = kong-plugin-url-rewrite
 VERSION = "1.2.0-0"
 
-setup:
+rockspec:
 	cp rockspec.template kong-plugin-url-rewrite-$(VERSION).rockspec
+
+setup: rockspec
 	@for rock in $(DEV_ROCKS) ; do \
 		if luarocks list --porcelain $$rock | grep -q "installed" ; then \
 			echo $$rock already installed, skipping ; \

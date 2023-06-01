@@ -1,10 +1,12 @@
 DEV_ROCKS = "https://raw.githubusercontent.com/openresty/lua-cjson/2.1.0.8/lua-cjson-2.1.0.6-1.rockspec" "kong 3.0.0" "luacov 0.12.0" "busted 2.0.rc12" "luacov-cobertura 0.2-1" "luacheck 0.20.0"
 PROJECT_FOLDER = url-rewrite
 LUA_PROJECT = kong-plugin-url-rewrite
-VERSION = "1.2.0-0"
+VERSION = "1.3.0-0"
 
-setup:
+rockspec:
 	cp rockspec.template kong-plugin-url-rewrite-$(VERSION).rockspec
+
+setup: rockspec
 	@for rock in $(DEV_ROCKS) ; do \
 		if luarocks list --porcelain $$rock | grep -q "installed" ; then \
 			echo $$rock already installed, skipping ; \

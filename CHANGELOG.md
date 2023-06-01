@@ -5,6 +5,13 @@ All changes made on any release of this project should be commented on high leve
 Document model based on [Semantic Versioning](http://semver.org/).
 Examples of how to use this _markdown_ cand be found here [Keep a CHANGELOG](http://keepachangelog.com/).
 
+## [1.3.0](https://github.com/stone-payments/kong-plugin-url-rewrite/compare/v1.2.0...v1.3.0) (2023-06-01)
+
+
+### Features
+
+* Makes rockspec file generation a separate entry in Makefile ([97d4983](https://github.com/stone-payments/kong-plugin-url-rewrite/commit/97d4983d35ac718616455f3347327b330d3b8843))
+
 ## [1.2.0](https://github.com/stone-payments/kong-plugin-url-rewrite/compare/v1.1.1...v1.2.0) (2022-10-04)
 
 

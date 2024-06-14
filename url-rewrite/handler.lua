@@ -47,6 +47,14 @@ function URLRewriter:access(config)
     url = service_path..url
   end
 
+  local traceparent = ngx.req.get_uri_args("traceparent")
+
+  if traceparent ~= "" then
+    print("traceparent: ", traceparent)
+  else
+    print("traceparent vazio")
+  end
+
   ngx.var.upstream_uri = url
 end
 

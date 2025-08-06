@@ -44,9 +44,9 @@ You can run `luacov` and it will generate a `luacov.report.out` containing a com
 
 ### Branching
 
-- **New Features** `feature/<Name of feature>` from `develop`.
-- **Bugfix** `bugfix/<Name of bugfix>` from `develop`.
-- **Improvements** `improvement/<Name of improvement>` from `develop`.
+- **New Features** `feature/<Name of feature>` from `main`.
+- **Bugfix** `bugfix/<Name of bugfix>` from `main`.
+- **Improvements** `improvement/<Name of improvement>` from `main`.
 - **Hotfix** `hotfix/<Name of hotfix>` from `main`.
 
 ### Tests and coverage
@@ -56,37 +56,7 @@ You can run `luacov` and it will generate a `luacov.report.out` containing a com
 
 ### Commit messages
 
-- Use emoji at the beginning of each message. It help us to identify what's the purpose for each commit.
-
-| Code.                 | Emoji               | Description                                     |
-|-----------------------|---------------------|-------------------------------------------------|
-| `:rocket:`            | :rocket:            | when deploying a new version                    |
-| `:airplane:`          | :airplane:          | when releasing a new beta version               |
-| `:art:`               | :art:               | when improving the format/structure of the code |
-| `:racehorse:`         | :racehorse:         | when improving performance                      |
-| `:memo:`              | :memo:              | when writing docs                               |
-| `:bug:`               | :bug:               | when fixing a bug                               |
-| `:fire:`              | :fire:              | when removing code or files                     |
-| `:green_heart:`       | :green_heart:       | when work with CI                               |
-| `:white_check_mark:`  | :white_check_mark:  | when work with tests                            |
-| `:lock:`              | :lock:              | when dealing with security                      |
-| `:arrow_up:`          | :arrow_up:          | when upgrading dependencies                     |
-| `:arrow_down:`        | :arrow_down:        | when downgrading dependencies                   |
-| `:shirt:`             | :shirt:             | when removing linter warnings                   |
-| `:bulb:`              | :bulb:              | new idea                                        |
-| `:construction:`      | :construction:      | work in progress                                |
-| `:heavy_plus_sign:`   | :heavy_plus_sign:   | when adding feature                             |
-| `:heavy_minus_sign:`  | :heavy_minus_sign:  | when removing feature                           |
-| `:facepunch:`         | :facepunch:         | when resolving conflicts                        |
-| `:hammer:`            | :hammer:            | when changing configuration files               |
-
-- If possible, link the commit to the corresponding task in our JIRA.
-
-Commit example:
-
-```bash
-git commit -m ":arrow_up: (APIDC-001) Updates rockspec"
-```
+See [release-please](https://github.com/googleapis/release-please?tab=readme-ov-file#how-should-i-write-my-commits) for commit guidelines.
 
 ### Pull Requests
 
@@ -97,7 +67,6 @@ git commit -m ":arrow_up: (APIDC-001) Updates rockspec"
 - **DO** ensure each commit successfully builds. The entire PR must pass all tests in the Continuous Integration (CI) system before it'll be merged.
 - **DO NOT** mix independent, unrelated changes in one PR. Separate real product/test code changes from larger code formatting/dead code removal changes. Separate unrelated fixes into separate PRs, especially if they are in different assemblies.
 - **DO** address PR feedback in an additional commit(s) rather than amending the existing commits, and only rebase/squash them when necessary. This makes it easier for reviewers to track changes. If necessary, squashing should be handled by the merger using the "squash and merge" feature, and should only be done by the contributor upon request.
-- **DO** all the PRs to `develop` branch unless it is a `hotfix`. For this one you should do for both `develop` and `main` branches.
 
 ### Guiding Principles
 

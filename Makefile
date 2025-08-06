@@ -1,10 +1,15 @@
 DEV_ROCKS = "https://raw.githubusercontent.com/openresty/lua-cjson/2.1.0.8/lua-cjson-2.1.0.6-1.rockspec" "kong 3.0.0" "luacov 0.12.0" "busted 2.0.rc12" "luacov-cobertura 0.2-1" "luacheck 0.20.0"
 PROJECT_FOLDER = url-rewrite
 LUA_PROJECT = kong-plugin-url-rewrite
-VERSION = "1.3.0-0"
+VERSION = $(shell cat version.txt)
 
 rockspec:
-	cp rockspec.template kong-plugin-url-rewrite-$(VERSION).rockspec
+	if [ ! -f $(LUA_PROJECT)-$(VERSION)-1.rockspec ]; then \
+		mv -f *.rockspec $(LUA_PROJECT)-$(VERSION)-1.rockspec; \
+	fi
+	find . -name "*.rockspec" ! -name "${LUA_PROJECT}-${VERSION}-1.rockspec" -exec rm -f {} +
+	sed -i "s/version = \"[0-9]*\.[0-9]*\.[0-9]*-1\"/version = \"$(VERSION)-1\"/" "$(LUA_PROJECT)-$(VERSION)-1.rockspec"
+	sed -i -E "s/^( *)tag = \"v[0-9]+\.[0-9]+\.[0-9]+\"/\1tag = \"v$(VERSION)\"/" "$(LUA_PROJECT)-$(VERSION)-1.rockspec"
 
 setup: rockspec
 	@for rock in $(DEV_ROCKS) ; do \

@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/stone-payments/kong-plugin-url-rewrite/compare/v1.3.0...v2.0.0) (2025-08-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* Aligns plugin structure with modern kong plugin conventions
+
+### Features
+
+* Aligns plugin structure with modern kong plugin conventions ([002a63d](https://github.com/stone-payments/kong-plugin-url-rewrite/commit/002a63deb26732616a3ad09d06a4545e44411f4e))
+
 ## [1.3.0](https://github.com/stone-payments/kong-plugin-url-rewrite/compare/v1.2.0...v1.3.0) (2023-06-01)
 
 

@@ -1,6 +1,6 @@
 local URLRewriter = {
   PRIORITY = 700,
-  VERSION = "1.3.0" -- x-release-please-version
+  VERSION = "2.0.0" -- x-release-please-version
 }
 
 function split(s, delimiter)

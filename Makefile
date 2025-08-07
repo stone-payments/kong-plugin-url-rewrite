@@ -1,4 +1,5 @@
-DEV_ROCKS = "https://raw.githubusercontent.com/openresty/lua-cjson/2.1.0.8/lua-cjson-2.1.0.6-1.rockspec" "kong 3.0.0" "luacov 0.12.0" "busted 2.0.rc12" "luacov-cobertura 0.2-1" "luacheck 0.20.0"
+KONG_VERSION = 3.7.1.2
+DEV_ROCKS = "https://raw.githubusercontent.com/openresty/lua-cjson/2.1.0.8/lua-cjson-2.1.0.6-1.rockspec" "kong $(KONG_VERSION)" "luacov 0.12.0" "busted 2.0.rc12" "luacov-cobertura 0.2-1" "luacheck 0.20.0"
 PROJECT_FOLDER = url-rewrite
 LUA_PROJECT = kong-plugin-url-rewrite
 VERSION = $(shell cat version.txt)
@@ -41,7 +42,7 @@ docker-run:
 	docker run -it -v $(shell pwd):/home/plugin $(LUA_PROJECT) /bin/bash
 
 test:
-	cd $(PROJECT_FOLDER) && busted spec/ ${ARGS}
+	KONG_VERSION=$(KONG_VERSION) pongo run -- -t unit
 
 coverage:
 	cd $(PROJECT_FOLDER) && busted spec/ -c && luacov && luacov-cobertura -o cobertura.xml

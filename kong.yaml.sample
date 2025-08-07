@@ -1,0 +1,43 @@
+_format_version: "3.0"
+
+services:
+  - name: echo
+    enabled: true
+    host: echo
+    port: 80
+    protocol: http
+    routes:
+      - name: echo-route
+        protocols:
+          - http
+        methods:
+          - GET
+        paths:
+          - ~/foo/(?<bar>\S+)
+        strip_path: false
+        plugins:
+          - name: url-rewrite
+            enabled: true
+            protocols:
+              - http
+            config:
+              url: /baz/<bar>
+
+      - name: echo-route-with-query-params
+        protocols:
+          - http
+        methods:
+          - GET
+        paths:
+          - ~/query/(?<bar>\S+)
+        strip_path: false
+        plugins:
+          - name: url-rewrite
+            enabled: true
+            protocols:
+              - http
+            config:
+              url: /test
+              query_string:
+                - test=123
+                - bar=<bar>

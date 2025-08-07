@@ -1,7 +1,7 @@
 local typedefs = require 'kong.db.schema.typedefs'
 
 return {
-  name = "kong-plugin-url-rewrite",
+  name = "url-rewrite",
   fields = {
     { consumer = typedefs.no_consumer, },
     {

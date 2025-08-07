@@ -42,3 +42,7 @@ luac.out
 
 # Cobertura
 cobertura.xml
+
+# Local development files
+kong.y*ml
+.env

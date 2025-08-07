@@ -9,7 +9,7 @@
       "prerelease": false,
       "extra-files": [
         "version.txt",
-        "url-rewrite/handler.lua"
+        "kong/plugins/url-rewrite/handler.lua"
       ]
     }
   },

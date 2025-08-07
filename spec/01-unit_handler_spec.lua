@@ -18,9 +18,9 @@ local ngx =  {
 
 _G.ngx = ngx
 
-local URLRewriter = require('../handler')
+local URLRewriter = require('kong.plugins.url-rewrite.handler')
 
-describe("TestHandler", function()
+describe("Test #unit handler", function()
 
   it("should test rewrite of upstream_uri", function()
     assert.equal('mock', ngx.var.upstream_uri)

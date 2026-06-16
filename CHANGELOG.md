@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.1](https://github.com/stone-payments/kong-plugin-url-rewrite/compare/v2.1.0...v2.1.1) (2026-06-16)
+
+
+### Bug Fixes
+
+* Installs JSON library for LuaRocks upload ([bcbd334](https://github.com/stone-payments/kong-plugin-url-rewrite/commit/bcbd33469db4775f05f79d414bc7ca6d01c03a05))
+
 ## [2.1.0](https://github.com/stone-payments/kong-plugin-url-rewrite/compare/v2.0.0...v2.1.0) (2026-06-16)
 
 

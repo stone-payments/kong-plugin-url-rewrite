@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/stone-payments/kong-plugin-url-rewrite/compare/v2.0.0...v2.1.0) (2026-06-16)
+
+
+### Features
+
+* Build and upload .rock artifact on release ([#70](https://github.com/stone-payments/kong-plugin-url-rewrite/issues/70)) ([a4d3669](https://github.com/stone-payments/kong-plugin-url-rewrite/commit/a4d3669678d7dd3a08663e03369c27429d67b018))
+
 ## [2.0.0](https://github.com/stone-payments/kong-plugin-url-rewrite/compare/v1.3.0...v2.0.0) (2025-08-07)
 
 

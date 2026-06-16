@@ -1,9 +1,9 @@
 package = "kong-plugin-url-rewrite"
-version = "2.1.0-1"
+version = "2.1.1-1"
 source = {
    url = "git://github.com/stone-payments/kong-plugin-url-rewrite",
    branch = "main",
-   tag = "v2.1.0",
+   tag = "v2.1.1",
 }
 description = {
   summary = "KongAPI Gateway middleware plugin for url-rewrite purposes.",

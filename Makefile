@@ -1,6 +1,5 @@
 KONG_VERSION = 3.7.1.2
 DEV_ROCKS = "https://raw.githubusercontent.com/openresty/lua-cjson/2.1.0.8/lua-cjson-2.1.0.6-1.rockspec" "kong $(KONG_VERSION)" "luacov 0.12.0" "busted 2.0.rc12" "luacov-cobertura 0.2-1" "luacheck 0.20.0"
-PROJECT_FOLDER = url-rewrite
 LUA_PROJECT = kong-plugin-url-rewrite
 VERSION = $(shell cat version.txt)
 
@@ -45,10 +44,10 @@ test:
 	KONG_VERSION=$(KONG_VERSION) pongo run -- -t unit
 
 coverage:
-	cd $(PROJECT_FOLDER) && busted spec/ -c && luacov && luacov-cobertura -o cobertura.xml
+	KONG_VERSION=$(KONG_VERSION) pongo run -- --coverage
 
 package:
 	luarocks make --pack-binary-rock
 
 lint:
-	cd $(PROJECT_FOLDER) && luacheck -q .
+	KONG_VERSION=$(KONG_VERSION) pongo lint

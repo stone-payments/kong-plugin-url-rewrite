@@ -31,11 +31,11 @@ commit message**, so the PR title is what drives the version bump. Get it right:
 
 | PR title prefix              | Version bump | Example                                         |
 | ---------------------------- | ------------ | ----------------------------------------------- |
-| `fix: ...`                   | patch        | `fix: prepend service path only when present`   |
-| `feat: ...`                  | minor        | `feat: validate config.url as an RFC 3986 path` |
-| `feat!: ...` / `fix!: ...`   | major        | `feat!: require config.url to start with a /`   |
-| `BREAKING CHANGE:` in body   | major        | breaking change footer in the squash body       |
-| `chore:`, `docs:`, `test:` … | no release   | `docs: document placeholder syntax`             |
+| `fix: ...`                   | patch        | `fix: prepends service path only when present`   |
+| `feat: ...`                  | minor        | `feat: validates config.url as an RFC 3986 path` |
+| `feat!: ...` / `fix!: ...`   | major        | `feat!: requires config.url to start with a /`   |
+| `BREAKING CHANGE:` in body   | major        | breaking change footer in the squash body        |
+| `chore:`, `docs:`, `test:` … | no release   | `docs: documents placeholder syntax`             |
 
 When a change is backwards-incompatible (e.g. a config field becomes stricter),
 mark it as breaking (`!` or a `BREAKING CHANGE:` footer) so release-please bumps
@@ -58,18 +58,20 @@ message).
 
 - **type** — one of: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`,
   `build`, `ci`, `chore`, `revert`.
-- **description** — short, imperative mood, lower-case, no trailing period
-  (e.g. "add", not "added"/"adds").
+- **description** — start with a **present-tense, third-person-singular verb** so
+  the subject reads as the answer to "what does this do?" (e.g. "adds", "fixes",
+  "validates" — not "add"/"added"). Keep it lower-case with no trailing period;
+  the squashed PR title is what lands in the changelog.
 - **breaking change** — append `!` after the type/scope **or** add a
   `BREAKING CHANGE: <explanation>` footer.
 
 Examples:
 
 ```
-feat: validate config.url as an RFC 3986 path
-fix(handler): prepend service path only when present
-docs: document the query_string configuration field
-feat!: require config.url to start with a forward slash
+feat: validates config.url as an RFC 3986 path
+fix(handler): prepends the service path only when present
+docs: documents the query_string configuration field
+feat!: requires config.url to start with a forward slash
 ```
 
 ## Testing

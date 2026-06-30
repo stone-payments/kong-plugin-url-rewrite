@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/stone-payments/kong-plugin-url-rewrite/compare/v2.1.1...v3.0.0) (2026-06-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* config.url values that do not start with "/" are now rejected by the schema.
+
+### Features
+
+* validates config.url as a required RFC 3986 path ([51db40d](https://github.com/stone-payments/kong-plugin-url-rewrite/commit/51db40d096f8942c991f983e8c124d9fb7055e67))
+
 ## [2.1.1](https://github.com/stone-payments/kong-plugin-url-rewrite/compare/v2.1.0...v2.1.1) (2026-06-16)
 
 
